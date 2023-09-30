@@ -10,7 +10,7 @@ h2{
 }
 
 .flex-container{
-    display: flez;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -29,7 +29,7 @@ h2{
 
 .square{
     border: 2px solid rgba(0, 0, 0, .75);
-    height: 140x;
+    height: 140px;
     width: 140px;
 }
 
