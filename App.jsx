@@ -19,6 +19,7 @@ function App() {
     const [board, setBoard] = React.useState(['','','','','','','','','']);
     let turn = 'X';
     let win;
+    const [currentTurn, setCurrentTurn] = useState('X');
 
 
 function handleTurn(event) {
@@ -29,13 +30,14 @@ function handleTurn(event) {
 
     if (gameOver == false) {
         let newBoard = [...board]
-        newBoard[idx] = turn
+        newBoard[idx] = currentTurn;
         setBoard(newBoard)
 
         // phase 5
         //turn = turn === 'X' ? 'O' : 'X';
 
-        const [currentTurn, setCurrentTurn] = useState('X');
+        
+        setCurrentTurn(currentTurn === 'X' ? 'O' : 'X');
         //win = getWinner();
         //render();
     }
