@@ -31,7 +31,11 @@ function handleTurn(event) {
         let newBoard = [...board]
         newBoard[idx] = turn
         setBoard(newBoard)
-        turn = turn === 'X' ? 'O' : 'X';
+
+        // phase 5
+        //turn = turn === 'X' ? 'O' : 'X';
+
+        const [currentTurn, setCurrentTurn] = useState('X');
         //win = getWinner();
         //render();
     }
@@ -40,8 +44,9 @@ function handleTurn(event) {
     return (
     <div>
         <h1>Tic-React-Toe</h1>
-    
-        <h2>It's X's turn!</h2>
+    // update message
+        {/* <h2>It's X's turn!</h2> */}
+        <div className="message">It's {currentTurn}'s turn </div>
 
     <div class="flex-container flex-column">
         <div class="flex-container flex-wrap" id="board" onClick={handleTurn}>
@@ -54,15 +59,7 @@ function handleTurn(event) {
 
         )}
 
-            {/* <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>     */}
+           
         </div>
     <button id="reset-button">reset</button>
     </div>
