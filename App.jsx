@@ -14,12 +14,22 @@ function App() {
         [0, 4, 8],
         [2, 4, 6]
         ];
+
+        //----chheck winner combo ---
+
+    for (const combos of winningCombos ){
+        const[a, b, c] = combos;
+        if (board[a] && board[a] === board[b] && board[a] ==board[c] ){
+            return board[a];
+        }
+    };
+
           //----- app's state (variables) -----
 
     const [board, setBoard] = React.useState(['','','','','','','','','']);
     let turn = 'X';
     let win;
-    const [currentTurn, setCurrentTurn] = useState('X');
+    const [currentTurn, setCurrentTurn] = React.useState('X');
 
 
 function handleTurn(event) {
@@ -34,13 +44,21 @@ function handleTurn(event) {
         setBoard(newBoard)
 
         // phase 5
-        //turn = turn === 'X' ? 'O' : 'X';
+       
 
         
-        setCurrentTurn(currentTurn === 'X' ? 'O' : 'X');
+        
         //win = getWinner();
+        const gameWinner = calcWinner(newBoard);
+        if (gameWinner){
+            setWinner(gameWinner);
+        }else{
+
+             //turn = turn === 'X' ? 'O' : 'X';
+            setCurrentTurn(currentTurn === 'X' ? 'O' : 'X');
+            
         //render();
-    }
+    }}
 };    
   
     return (
@@ -48,7 +66,8 @@ function handleTurn(event) {
         <h1>Tic-React-Toe</h1>
     // update message
         {/* <h2>It's X's turn!</h2> */}
-        <div className="message">It's {currentTurn}'s turn </div>
+        <div className="message">winner ? 'Winner: ${gameWinner}
+        : It's {currentTurn}'s turn </div>
 
     <div class="flex-container flex-column">
         <div class="flex-container flex-wrap" id="board" onClick={handleTurn}>
